@@ -12,6 +12,13 @@ contract NFT is ERC721URIStorage {
     uint256 private _mintFee;
     uint256 private _tokenCounter;
 
+    // * EVENTS
+    event NFTMinted(
+        address indexed owner,
+        uint256 indexed tokenId,
+        uint256 indexed value
+    );
+
     // * FUNCTIONS
     constructor(
         string memory nftTokenUri,
@@ -28,5 +35,12 @@ contract NFT is ERC721URIStorage {
         if (msg.value < _mintFee) {
             revert NFT__InsufficientMintFee(msg.value);
         }
+
+        uint256 tokenId = _tokenCounter;
+        _tokenCounter = _tokenCounter + 1;
+
+        _safeMint(msg.sender, tokenId);
+        _setTokenURI(tokenId, _nftTokenUri);
+        emit NFTMinted(msg.sender, tokenId, msg.value);
     }
 }
