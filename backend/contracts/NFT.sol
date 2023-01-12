@@ -13,6 +13,7 @@ error NFT__WithdrawTransactionFailed();
  * @author Ali Murtaza Memon
  * @notice This contract will mint ERC721 (aka NFT - Non-Fungible-Token) token
  * @dev This contract uses the ERC721URIStorage extension of ERC721 which provides the way to update the token uri with function `_setTokenURI`.
+ * @custom:portfolio This is my portfolio project.
  */
 contract NFT is ERC721URIStorage, Ownable {
     // * STATE VARIABLES
@@ -30,6 +31,12 @@ contract NFT is ERC721URIStorage, Ownable {
     event Withdraw(uint256 indexed amount, uint256 indexed timestamp);
 
     // * FUNCTIONS
+    /**
+     * @param nftTokenUri will be the token metadata ipfs hash.
+     * @param name will be the name of the token.
+     * @param symbol will be the symbol of the token.
+     * @param mintFee will be the fee required to mint an NFT.
+     */
     constructor(
         string memory nftTokenUri,
         string memory name,
@@ -41,6 +48,10 @@ contract NFT is ERC721URIStorage, Ownable {
         _tokenCounter = 0;
     }
 
+    /**
+     * @notice mintNft will mint the NFT on the blockchain.
+     * @dev here I am using the _setTokenURI function to set the token uri.
+     */
     function mintNft() external payable {
         if (msg.value < _mintFee) {
             revert NFT__InsufficientMintFee(msg.value);
@@ -54,6 +65,7 @@ contract NFT is ERC721URIStorage, Ownable {
         emit NFTMinted(msg.sender, tokenId, msg.value);
     }
 
+    /// @notice withdraw will transfer all of the sold nfts funds to owner of the contract.
     function withdraw() external onlyOwner {
         uint256 amount = address(this).balance;
 
