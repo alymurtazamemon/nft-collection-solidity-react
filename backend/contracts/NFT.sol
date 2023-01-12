@@ -11,7 +11,7 @@ error NFT__WithdrawTransactionFailed();
 contract NFT is ERC721URIStorage, Ownable {
     // * STATE VARIABLES
     string private _nftTokenUri;
-    uint256 private _mintFee;
+    uint256 private immutable _mintFee;
     uint256 private _tokenCounter;
 
     // * EVENTS
