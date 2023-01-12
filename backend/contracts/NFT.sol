@@ -21,6 +21,8 @@ contract NFT is ERC721URIStorage, Ownable {
         uint256 indexed value
     );
 
+    event Withdraw(uint256 indexed amount, uint256 indexed timestamp);
+
     // * FUNCTIONS
     constructor(
         string memory nftTokenUri,
@@ -47,12 +49,13 @@ contract NFT is ERC721URIStorage, Ownable {
     }
 
     function withdraw() external onlyOwner {
-        (bool success, ) = payable(msg.sender).call{
-            value: address(this).balance
-        }("");
+        uint256 amount = address(this).balance;
+
+        (bool success, ) = payable(msg.sender).call{value: amount}("");
         if (!success) {
             revert NFT__WithdrawTransactionFailed();
         }
+        emit Withdraw(amount, block.timestamp);
     }
 
     function getNftTokenUri() external view returns (string memory) {
