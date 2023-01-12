@@ -54,4 +54,16 @@ contract NFT is ERC721URIStorage, Ownable {
             revert NFT__WithdrawTransactionFailed();
         }
     }
+
+    function getNftTokenUri() external view returns (string memory) {
+        return _nftTokenUri;
+    }
+
+    function getMintFee() external view returns (uint256) {
+        return _mintFee;
+    }
+
+    function getTokenCounter() external view returns (uint256) {
+        return _tokenCounter;
+    }
 }
