@@ -22,12 +22,22 @@ contract NFT is ERC721URIStorage, Ownable {
     uint256 private _tokenCounter;
 
     // * EVENTS
+    /**
+     * @dev This event will be emitted inside mintNft function.
+     * @param owner will be address who call the mintNft function.
+     * @param tokenId will be the token id which user will have minted.
+     * @param value will be the amount on which NFT will be minted.
+     */
     event NFTMinted(
         address indexed owner,
         uint256 indexed tokenId,
         uint256 indexed value
     );
-
+    /**
+     * @dev This event will be emitted inside withdraw function.
+     * @param amount will be the amount owner will withdraw at the timestamp.
+     * @param timestamp will be the time of withdrawl.
+     */
     event Withdraw(uint256 indexed amount, uint256 indexed timestamp);
 
     // * FUNCTIONS
