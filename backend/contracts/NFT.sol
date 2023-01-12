@@ -1,12 +1,13 @@
 // SPDX-License-Identifier: MIT
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
 pragma solidity ^0.8.17;
 
 error NFT__InsufficientMintFee(uint256 insufficientMintFee);
 
-contract NFT is ERC721URIStorage {
+contract NFT is ERC721URIStorage, Ownable {
     // * STATE VARIABLES
     string private _nftTokenUri;
     uint256 private _mintFee;
