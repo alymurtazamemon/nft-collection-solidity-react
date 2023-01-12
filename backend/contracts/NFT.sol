@@ -8,6 +8,12 @@ pragma solidity ^0.8.17;
 error NFT__InsufficientMintFee(uint256 insufficientMintFee);
 error NFT__WithdrawTransactionFailed();
 
+/**
+ * @title NFT - A ERC721URIStorage version of smart contract.
+ * @author Ali Murtaza Memon
+ * @notice This contract will mint ERC721 (aka NFT - Non-Fungible-Token) token
+ * @dev This contract uses the ERC721URIStorage extension of ERC721 which provides the way to update the token uri with function `_setTokenURI`.
+ */
 contract NFT is ERC721URIStorage, Ownable {
     // * STATE VARIABLES
     string private _nftTokenUri;
