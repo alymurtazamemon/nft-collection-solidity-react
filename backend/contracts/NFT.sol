@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 pragma solidity ^0.8.17;
 
 error NFT__InsufficientMintFee(uint256 insufficientMintFee);
+error NFT__WithdrawTransactionFailed();
 
 contract NFT is ERC721URIStorage, Ownable {
     // * STATE VARIABLES
@@ -43,5 +44,14 @@ contract NFT is ERC721URIStorage, Ownable {
         _safeMint(msg.sender, tokenId);
         _setTokenURI(tokenId, _nftTokenUri);
         emit NFTMinted(msg.sender, tokenId, msg.value);
+    }
+
+    function withdraw() external onlyOwner {
+        (bool success, ) = payable(msg.sender).call{
+            value: address(this).balance
+        }("");
+        if (!success) {
+            revert NFT__WithdrawTransactionFailed();
+        }
     }
 }
