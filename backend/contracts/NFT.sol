@@ -4,6 +4,8 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
 pragma solidity ^0.8.17;
 
+error NFT__InsufficientMintFee(uint256 insufficientMintFee);
+
 contract NFT is ERC721URIStorage {
     // * STATE VARIABLES
     string private _nftTokenUri;
@@ -20,5 +22,11 @@ contract NFT is ERC721URIStorage {
         _nftTokenUri = nftTokenUri;
         _mintFee = mintFee;
         _tokenCounter = 0;
+    }
+
+    function mintNft() external payable {
+        if (msg.value < _mintFee) {
+            revert NFT__InsufficientMintFee(msg.value);
+        }
     }
 }
