@@ -77,3 +77,6 @@ There are three scripts inside this folder;
             pinataMetadata: { name: "nft-metadata.json" },
         });`
 
+### Install dependencies
+
+1. Install the dependencies `npm install --force`
