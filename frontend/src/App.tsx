@@ -48,7 +48,7 @@ function App() {
     }
 
     async function handleSuccess(tx: ContractTransaction): Promise<void> {
-        console.log("success");
+        // console.log("success");
         await tx.wait(1);
         listenEvent();
     }
@@ -58,7 +58,7 @@ function App() {
     }
 
     async function listenEvent() {
-        console.log("listening");
+        // console.log("listening");
         setLoading(true);
 
         // * add a waiting delay for hardhat network.
@@ -84,11 +84,12 @@ function App() {
                     );
                 });
 
-                console.log("done");
+                // console.log("done");
                 setLoading(false);
             }
         } catch (error) {
-            console.log(error);
+            // console.log(error);
+            alert(error);
         }
     }
 
