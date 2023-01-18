@@ -22,8 +22,7 @@ const deployEscrowFactory: DeployFunction = async (
     const metadataIpfsHash: string = "";
 
     if (metadataIpfsHash == "") {
-        console.log("Specify the hash of the metadata.");
-        return;
+        throw "Specify the hash of the metadata.";
     }
 
     const nftUri: string = `ipfs://${metadataIpfsHash}`;
