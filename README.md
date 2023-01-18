@@ -10,6 +10,8 @@
 4. React
 5. Tailwind
 
+## Website Link: [OPEN](https://nft-collection-solidity-react.vercel.app/)
+
 ## Demo Video
 
 https://user-images.githubusercontent.com/56123405/213124338-839ac38d-dc55-42b3-9946-2eb62c996eea.mp4
