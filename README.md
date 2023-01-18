@@ -20,3 +20,6 @@ https://user-images.githubusercontent.com/56123405/213124338-839ac38d-dc55-42b3-
 
 <img width="1470" alt="nft-collection-gold-sonic-cat" src="https://user-images.githubusercontent.com/56123405/213124481-a9a33331-fd88-47cb-9ad4-eb033a535891.png">
 
+### Run Instructions
+
+React the instructions inside frontend and backend folders for setup of both.
