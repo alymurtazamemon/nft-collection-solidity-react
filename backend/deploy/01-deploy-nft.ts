@@ -11,7 +11,7 @@ import verify from "../utils/verify";
  *
  */
 
-const deployEscrowFactory: DeployFunction = async (
+const deployNFTContract: DeployFunction = async (
     hre: HardhatRuntimeEnvironment
 ) => {
     const { deploy } = hre.deployments;
@@ -48,5 +48,5 @@ const deployEscrowFactory: DeployFunction = async (
     }
 };
 
-export default deployEscrowFactory;
-deployEscrowFactory.tags = ["all", "nft"];
+export default deployNFTContract;
+deployNFTContract.tags = ["all", "nft"];
